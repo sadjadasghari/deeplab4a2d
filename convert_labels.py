@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-# Martin Kersner, m.kersner@gmail.com
-# 2016/01/25 
+# Sadjad Esfeden, sadjad@ece.neu.edu
+# 05/20/2016 
 
 from __future__ import print_function
 import os
 import sys
 from skimage.io import imread, imsave
-from utils import convert_from_color_segmentation
+from utils_a2d import convert_from_color_segmentation
 
 def main():
   ##
