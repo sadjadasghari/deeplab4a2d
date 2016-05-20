@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
-# Modified version from https://bitbucket.org/deeplab/deeplab-public
-# Martin Kersner, m.kersner@gmail.com
-# 2016/04/05
+# Modified version from https://github.com/martinkersner/train-DeepLab
+# Sadjad A Esfeden, sadjad@ece.neu.edu	
+# 05/09/2016
 
 CAFFE_BIN=code/.build_release/tools/caffe.bin
-EXP=exper/voc12
+EXP=exper/a2d
 DATA_ROOT=exper/voc12/data
 GPU_ID=2
 
@@ -21,13 +21,13 @@ TRAIN_SET_SUFFIX=    # original PASCAL VOC 2012 dataset
 #TRAIN_SET_SUFFIX= _aug # augmented PASCAL VOC dataset
 
 # Specify which model to train
-NET_ID=DeepLab-LargeFOV
+NET_ID=DeepLab-LargeFOV-a2d-finetuned
 
 # Run
 RUN_TRAIN=0
-RUN_TEST=1
-RUN_TRAIN2=0
-RUN_TEST2=1
+RUN_TEST=0
+RUN_TRAIN2=1
+RUN_TEST2=0
 
 # Create directories ###########################################################
 CONFIG_DIR=${EXP}/config/${NET_ID}
@@ -97,7 +97,7 @@ if [ ${RUN_TRAIN2} -eq 1 ]; then
   LIST_DIR=${EXP}/list${LIST_SUFFIX}
   TRAIN_SET=trainval${TRAIN_SET_SUFFIX}
 
-  MODEL=${EXP}/model/${NET_ID}/init2.caffemodel
+  MODEL=${EXP}/model/${NET_ID}/train2_iter_8000.caffemodel #init2.caffemodel
 
   if [ ! -f ${MODEL} ]; then
 	  MODEL=`ls -t ${EXP}/model/${NET_ID}/train_iter_*.caffemodel | head -n 1`
