@@ -6,7 +6,7 @@ from __future__ import print_function
 import os
 import sys
 from skimage.io import imread, imsave
-from utils_a2d import convert_from_color_segmentation
+from utils_a2d import convert_from_color_segmentation #changed for a2d dataset
 
 def main():
   ##
