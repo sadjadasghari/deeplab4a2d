@@ -5,8 +5,15 @@
 import numpy as np
 
 def a2d_classes():
-  classes = {'adult' : 1,  'baby'   : 2,  'ball'        : 3,  'bird'         : 4, 
-             'car'    : 5,  'cat'       : 6,  'dog'         : 7}
+  classes = {'adult-climbing' : 1, 'adult-crawling' : 2, 'adult-eating': 3, 'adult-jumping': 4, 'adult-rolling': 5, 'adult-running': 6, 'adult-walking': 7, 'adult-none': 8,
+              'baby-climbing' : 9, 'baby-crawling' : 10,	'baby-rolling': 11, 'baby-walking': 12, 'baby-none': 13, 
+              'ball-flying': 14, 'ball-jumping': 15, 'ball-rolling': 16, 'ball-none': 17, 
+              'bird-climbing': 18, 'bird-eating': 19, 'bird-flying': 20, 'bird-jumping': 21, 'bird-rolling': 22, 'bird-walking': 23,'bird-none': 24,
+              'car-flying': 25, 'car-jumping': 26, 'car-rolling': 27, 'car-running': 28, 'car-none': 29,
+              'cat-climbing': 30, 'cat-eating': 31, 'cat-jumping': 32, 'cat-rolling': 33, 'cat-running': 34, 'cat-walking': 35, 'cat-none': 36, 
+              'dog-crawling': 37, 'dog-eating': 38, 'dog-jumping': 39, 'dog-rolling': 40, 'dog-running': 41, 'dog-walking': 42, 'dog-none': 43} 
+              #'adult' : 1,  'baby'   : 2,  'ball'        : 3,  'bird'         : 4, 
+             #'car'    : 5,  'cat'       : 6,  'dog'         : 7}
 
   return classes
 
@@ -29,7 +36,7 @@ def a2d_palette():
              (52,	255,	1) : 15, 
              (92,	255,	51) : 16, 
              (215,	255,	205) : 17, 
-             (1,   52, 36) : 18 ,
+             (1,   52, 36) : 18 , #bird-climbing
              (1,   154, 108) : 19 ,
              (1,   205, 143) : 20 ,
              (1,   255, 179) : 21 ,
