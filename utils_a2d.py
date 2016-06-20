@@ -3,6 +3,8 @@
 # 05/20/2016
 
 import numpy as np
+import struct
+import numpy as np
 
 def a2d_classes():
   classes = {'adult-climbing' : 1, 'adult-crawling' : 2, 'adult-eating': 3, 'adult-jumping': 4, 'adult-rolling': 5, 'adult-running': 6, 'adult-walking': 7, 'adult-none': 8,
@@ -69,6 +71,85 @@ def a2d_palette():
 
   return palette
 
+def a2d_palette_invert():
+  palette_list = a2d_palette().keys()
+  palette = ()
+  
+  for color in palette_list:
+    palette += color
+
+return palette
+
+def a2d_mean_values():
+  return np.array([103.939, 116.779, 123.68], dtype=np.float32)
+
+def strstr(str1, str2):
+  if str1.find(str2) != -1:
+    return True
+  else:
+return False
+
+# Mat to png conversion for http://www.cs.berkeley.edu/~bharath2/codes/SBD/download.html
+# 'GTcls' key is for class segmentation
+# 'GTinst' key is for instance segmentation
+def mat2png_hariharan(mat_file, key='GTcls'):
+  mat = scipy.io.loadmat(mat_file, mat_dtype=True, squeeze_me=True, struct_as_record=False)
+  return mat[key].Segmentation
+
+def convert_segmentation_mat2numpy(mat_file):
+  np_segm = load_mat(mat_file)
+  return np.rot90(np.fliplr(np.argmax(np_segm, axis=2)))
+
+def load_mat(mat_file, key='data'):
+  mat = scipy.io.loadmat(mat_file, mat_dtype=True, squeeze_me=True, struct_as_record=False)
+  return mat[key]
+
+# Python version of script in code/densecrf/my_script/LoadBinFile.m
+def load_binary_segmentation(bin_file, dtype='int16'):
+  with open(bin_file, 'rb') as bf:
+    rows = struct.unpack('i', bf.read(4))[0]
+    cols = struct.unpack('i', bf.read(4))[0]
+    channels = struct.unpack('i', bf.read(4))[0]
+
+    num_values = rows * cols # expect only one channel in segmentation output
+    out = np.zeros(num_values, dtype=np.uint8) # expect only values between 0 and 255
+
+    for i in range(num_values):
+      out[i] = np.uint8(struct.unpack('h', bf.read(2))[0])
+
+    return np.rot90(np.fliplr(out.reshape((cols, rows))))
+
+def convert_from_color_segmentation(arr_3d):
+  arr_2d = np.zeros((arr_3d.shape[0], arr_3d.shape[1]), dtype=np.uint8)
+  palette = a2d_palette()
+
+  # slow!
+  for i in range(0, arr_3d.shape[0]):
+    for j in range(0, arr_3d.shape[1]):
+      key = (arr_3d[i,j,0], arr_3d[i,j,1], arr_3d[i,j,2])
+      arr_2d[i, j] = palette.get(key, 0) # default value if key was not found is 0
+
+  return arr_2d
+
+def create_lut(class_ids, max_id=256):
+  # Index 0 is the first index used in caffe for denoting labels.
+  # Therefore, index 0 is considered as default.
+  lut = np.zeros(max_id, dtype=np.uint8)
+
+  new_index = 1
+  for i in class_ids:
+    lut[i] = new_index
+    new_index += 1
+
+  return lut
+
+def get_id_classes(classes):
+  all_classes = a2d_classes()
+  id_classes = [all_classes[c] for c in classes]
+return id_classes
+
+######################
+'''
 def palette_demo():
   palette_list = a2d_palette().keys()
   palette = ()
@@ -112,3 +193,4 @@ def create_lut(class_ids, max_id=256):
     new_index += 1
 
   return lut
+'''
