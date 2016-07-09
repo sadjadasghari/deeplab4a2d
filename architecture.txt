@@ -1,0 +1,48 @@
+Architecture:
+Data
+1. Data
+2. Conv 1-1
+3. relu 1-1
+4. conv 1-2
+5. relu 1-2
+6. pool 1
+7. conv 2-1
+8. relu 2-1
+9. conv 2-2
+10. relu 2-2
+11. pool 2
+12. conv 3-1
+13. relu 3-1
+14. conv 3-2
+15. relu 3-2
+16. conv 3-3
+17. relu 3-3
+18. pool 3
+19. conv 4-1
+20. relu 4-1
+21. conv 4-2
+22. relu 4-2
+23. conv 4-3
+24. relu 4-3
+25. pool 4
+26. conv 5-1
+27. relu 5-1
+28. conv 5-2
+29. relu 5-2
+30. conv 5-3
+31. relu 5-3
+32. pool 5
+33. pool 5a
+34. fc6
+35. relu 6
+36. drop 6
+37. fc7
+38. relu 7
+39. drop 7
+40. fc8-exp
+41. fc8-interp
+42. fc8-mat
+43. crf (data-dim)
+44. crf-mat
+45. silence
+Data
