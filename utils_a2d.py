@@ -4,72 +4,87 @@
 
 import numpy as np
 import struct
-import numpy as np
 
 def a2d_classes():
-  classes = {'adult-climbing' : 1, 'adult-crawling' : 2, 'adult-eating': 3, 'adult-jumping': 4, 'adult-rolling': 5, 'adult-running': 6, 'adult-walking': 7, 'adult-none': 8,
-              'baby-climbing' : 9, 'baby-crawling' : 10,	'baby-rolling': 11, 'baby-walking': 12, 'baby-none': 13, 
-              'ball-flying': 14, 'ball-jumping': 15, 'ball-rolling': 16, 'ball-none': 17, 
-              'bird-climbing': 18, 'bird-eating': 19, 'bird-flying': 20, 'bird-jumping': 21, 'bird-rolling': 22, 'bird-walking': 23,'bird-none': 24,
-              'car-flying': 25, 'car-jumping': 26, 'car-rolling': 27, 'car-running': 28, 'car-none': 29,
-              'cat-climbing': 30, 'cat-eating': 31, 'cat-jumping': 32, 'cat-rolling': 33, 'cat-running': 34, 'cat-walking': 35, 'cat-none': 36, 
-              'dog-crawling': 37, 'dog-eating': 38, 'dog-jumping': 39, 'dog-rolling': 40, 'dog-running': 41, 'dog-walking': 42, 'dog-none': 43} 
-              #'adult' : 1,  'baby'   : 2,  'ball'        : 3,  'bird'         : 4, 
-             #'car'    : 5,  'cat'       : 6,  'dog'         : 7}
+  classes = {#'adult-climbing' : 1, 'adult-crawling' : 2, 'adult-eating': 3, 'adult-jumping': 4, 'adult-rolling': 5, 'adult-running': 6, 'adult-walking': 7, 'adult-none': 8,
+              #'baby-climbing' : 9, 'baby-crawling' : 10,	'baby-rolling': 11, 'baby-walking': 12, 'baby-none': 13, 
+              #'ball-flying': 14, 'ball-jumping': 15, 'ball-rolling': 16, 'ball-none': 17, 
+              #'bird-climbing': 18, 'bird-eating': 19, 'bird-flying': 20, 'bird-jumping': 21, 'bird-rolling': 22, 'bird-walking': 23,'bird-none': 24,
+              #'car-flying': 25, 'car-jumping': 26, 'car-rolling': 27, 'car-running': 28, 'car-none': 29,
+              #'cat-climbing': 30, 'cat-eating': 31, 'cat-jumping': 32, 'cat-rolling': 33, 'cat-running': 34, 'cat-walking': 35, 'cat-none': 36, 
+              #'dog-crawling': 37, 'dog-eating': 38, 'dog-jumping': 39, 'dog-rolling': 40, 'dog-running': 41, 'dog-walking': 42, 'dog-none': 43} 
+              'adult' : 1,  'baby'   : 2,  'ball'        : 3,  'bird'         : 4, 
+             'car'    : 5,  'cat'       : 6,  'dog'         : 7}
 
   return classes
 
 def a2d_palette():
   palette = {(  0,   0,   0) : 0 ,
              (52,   1,   1) : 1 ,
-             (103,	1,	1): 2 , #1
-             (154,	1,	1): 3, 
-             (255,	1,	1): 4, 
-             (255,	51,	51): 5, 
-             (255,	103,	103): 6, 
-             (255,	154,	154): 7, 
-             (255,	205,	205): 8, 
-             (52, 46,   1) : 9 ,
-             (103, 92,   1) : 10 ,
-             (255, 235,   51) : 11 ,
-             (255, 245,   154) : 12 ,
-             (255, 250,   205) : 13 ,
-             (41,	205,	1) : 14 , #ball flying
-             (52,	255,	1) : 15, 
-             (92,	255,	51) : 16, 
-             (215,	255,	205) : 17, 
-             (1,   52, 36) : 18 , #bird-climbing
-             (1,   154, 108) : 19 ,
-             (1,   205, 143) : 20 ,
-             (1,   255, 179) : 21 ,
-             (51,   255, 194) : 22 ,
-             (154,   255, 225) : 23 ,
-             (205,   255, 240) : 24 ,
-             (1,   82, 205) : 25 ,
-             (1,   103, 255) : 26 ,
-             (51,   133, 255) : 27 ,
-             (103,   164, 255) : 28 ,
-             (205,   225, 255) : 29 ,
-             (26,   1, 52) : 30 ,
-             (77,   1, 154) : 31 ,
-             (128,   1, 255) : 32 ,
-             (154,   51, 255) : 33 ,
-             (179,   103, 255) : 34 ,
-             (205,   154, 255) : 35 ,
-             (230,   205, 255) : 36 ,
-             (103,   1, 62) : 37 ,
-             (154,   1, 92) : 38 ,
-             (255,   1, 153) : 39 ,
-             (255,	51,	174) : 40 ,
-             (255,	103,	194) : 41 ,
-             (255,	154,	215) : 42 ,
-             (255,	205,	235) : 43 ,
-             
-             #(1, 21, 52) : 5 ,
-             #(26, 1, 52) : 6 ,
-             #(52, 1, 31) : 7 }
-
+             (103,	1,	1): 1,#2 , #1
+             (154,	1,	1): 1,#3, 
+             (255,	1,	1): 1,#4, 
+             (255,	51,	51): 1,#5, 
+             (255,	103,	103): 1,#6, 
+             (255,	154,	154): 1,#7, 
+             (255,	205,	205): 1,#8, 
+             (52, 46,   1) : 2,#9 ,
+             (103, 92,   1) : 2,#10 ,
+             (255, 235,   51) : 2,#11 ,
+             (255, 245,   154) : 2,#12 ,
+             (255, 250,   205) : 2,#13 ,
+             (41,	205,	1) : 3,#14 , #ball flying
+             (52,	255,	1) : 3,#15, 
+             (92,	255,	51) : 3,#16, 
+             (215,	255,	205) : 3,#17, 
+             (1,   52, 36) : 4,#18 , #bird-climbing
+             (1,   154, 108) : 4,#19 ,
+             (1,   205, 143) : 4,#20 ,
+             (1,   255, 179) : 4,#21 ,
+             (51,   255, 194) : 4,#22 ,
+             (154,   255, 225) : 4,#23 ,
+             (205,   255, 240) : 4,#24 ,
+             (1,   82, 205) : 5,#25 ,
+             (1,   103, 255) : 5,#26 ,
+             (51,   133, 255) : 5,#27 ,
+             (103,   164, 255) : 5,#28 ,
+             (205,   225, 255) : 5,#29 ,
+             (26,   1, 52) : 6,#30 ,
+             (77,   1, 154) : 6,#31 ,
+             (128,   1, 255) : 6,#32 ,
+             (154,   51, 255) : 6,#33 ,
+             (179,   103, 255) : 6,#34 ,
+             (205,   154, 255) : 6,#35 ,
+             (230,   205, 255) : 6,#36 ,
+             (103,   1, 62) : 7,#37 ,
+             (154,   1, 92) : 7,#38 ,
+             (255,   1, 153) : 7,#39 ,
+             (255,	51,	174) : 7,#40 ,
+             (255,	103,	194) : 7,#41 ,
+             (255,	154,	215) : 7,#42 ,
+             (255,	205,	235) : 7}#,#43 }
   return palette
+'''{(  0,   0,   0) : 0 ,
+             (128,   0,   0) : 1 ,
+             (  0, 128,   0) : 2 ,
+             (128, 128,   0) : 3 ,
+             (  0,   0, 128) : 4 ,
+             (128,   0, 128) : 5 ,
+             (  0, 128, 128) : 6 ,
+             (128, 128, 128) : 7 ,
+             ( 64,   0,   0) : 8 ,
+             (192,   0,   0) : 9 ,
+             ( 64, 128,   0) : 10,
+             (192, 128,   0) : 11,
+             ( 64,   0, 128) : 12,
+             (192,   0, 128) : 13,
+             ( 64, 128, 128) : 14,
+             (192, 128, 128) : 15,
+             (  0,  64,   0) : 16,
+             (128,  64,   0) : 17,
+             (  0, 192,   0) : 18,
+             (128, 192,   0) : 19,
+             (  0,  64, 128) : 20 }'''
 
 def a2d_palette_invert():
   palette_list = a2d_palette().keys()
@@ -78,7 +93,7 @@ def a2d_palette_invert():
   for color in palette_list:
     palette += color
 
-return palette
+  return palette
 
 def a2d_mean_values():
   return np.array([103.939, 116.779, 123.68], dtype=np.float32)
@@ -87,7 +102,7 @@ def strstr(str1, str2):
   if str1.find(str2) != -1:
     return True
   else:
-return False
+    return False
 
 # Mat to png conversion for http://www.cs.berkeley.edu/~bharath2/codes/SBD/download.html
 # 'GTcls' key is for class segmentation
@@ -146,7 +161,7 @@ def create_lut(class_ids, max_id=256):
 def get_id_classes(classes):
   all_classes = a2d_classes()
   id_classes = [all_classes[c] for c in classes]
-return id_classes
+  return id_classes
 
 ######################
 '''
